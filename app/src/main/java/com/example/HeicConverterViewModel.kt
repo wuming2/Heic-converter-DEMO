@@ -113,7 +113,8 @@ class HeicConverterViewModel : ViewModel() {
 
     fun addSelectedImages(context: Context, uris: List<Uri>) {
         viewModelScope.launch(Dispatchers.IO) {
-            val newList = uris.map { uri ->
+            val filterEnabled = _filterOnlyHeic.value
+            val mappedItems = uris.map { uri ->
                 val name = getFileName(context, uri)
                 val size = getFileSize(context, uri)
                 ImageItem(
@@ -124,13 +125,30 @@ class HeicConverterViewModel : ViewModel() {
                     outputFormat = _outputFormat.value
                 )
             }
-            _selectedImages.update { current ->
-                // Avoid adding duplicate URIs
-                val existingUris = current.map { it.uri }.toSet()
-                current + newList.filter { it.uri !in existingUris }
+
+            val (matchingItems, skippedItems) = if (filterEnabled) {
+                mappedItems.partition { item ->
+                    val ext = item.name.substringAfterLast('.', "").lowercase()
+                    val mime = context.contentResolver.getType(item.uri)?.lowercase() ?: ""
+                    ext == "heic" || ext == "heif" || mime.contains("heic") || mime.contains("heif")
+                }
+            } else {
+                Pair(mappedItems, emptyList())
             }
-            appendLog(context.getString(R.string.log_import_success, newList.size))
-            FirebaseAnalyticsHelper.logSelectImages(newList.size)
+
+            if (matchingItems.isNotEmpty()) {
+                _selectedImages.update { current ->
+                    // Avoid adding duplicate URIs
+                    val existingUris = current.map { it.uri }.toSet()
+                    current + matchingItems.filter { it.uri !in existingUris }
+                }
+                appendLog(context.getString(R.string.log_import_success, matchingItems.size))
+                FirebaseAnalyticsHelper.logSelectImages(matchingItems.size)
+            }
+
+            if (skippedItems.isNotEmpty()) {
+                appendLog(context.getString(R.string.log_skipped_non_heic, skippedItems.size))
+            }
         }
     }
 

@@ -67,4 +67,5 @@
     <!-- File Picker Filter Options -->
     <string name="filter_only_heic">僅顯示 HEIC/HEIF 文件</string>
     <string name="filter_only_heic_desc">默認僅展示 .heic 與 .heif 格式文件。取消勾選後可選擇所有圖片格式。</string>
+    <string name="log_skipped_non_heic">已跳過 %1$d 個非 HEIC/HEIF 格式的文件</string>
 </resources>

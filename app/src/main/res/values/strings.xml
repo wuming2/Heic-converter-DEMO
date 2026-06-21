@@ -67,4 +67,5 @@
     <!-- File Picker Filter Options -->
     <string name="filter_only_heic">Only show HEIC/HEIF files</string>
     <string name="filter_only_heic_desc">Defaults to displaying only .heic/.heif files. Toggle off to allow all image formats.</string>
+    <string name="log_skipped_non_heic">Skipped %1$d files because they are not HEIC/HEIF format</string>
 </resources>
