@@ -865,45 +865,6 @@ fun ConverterScreen(
                                 )
                             }
 
-                            // Firebase Crashlytics Diagnostic Tools
-                            Spacer(modifier = Modifier.height(12.dp))
-                            Column(modifier = Modifier.fillMaxWidth()) {
-                                Text(
-                                    text = "Firebase Crashlytics",
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF444746)
-                                )
-                                Spacer(modifier = Modifier.height(4.dp))
-                                Text(
-                                    text = context.getString(R.string.test_crash_desc),
-                                    fontSize = 11.sp,
-                                    color = Color(0xFF747775)
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Button(
-                                    onClick = {
-                                        throw RuntimeException("Firebase Crashlytics Test Crash!")
-                                    },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(36.dp)
-                                        .testTag("trigger_test_crash_button"),
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = Color(0xFFBA1A1A),
-                                        contentColor = Color.White
-                                    ),
-                                    contentPadding = PaddingValues(vertical = 4.dp),
-                                    shape = RoundedCornerShape(8.dp)
-                                ) {
-                                    Text(
-                                        text = context.getString(R.string.test_crash_btn),
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                }
-                            }
-
                             // Dynamic Live Log Console Terminal
                             if (logText.isNotEmpty()) {
                                 Column(modifier = Modifier.fillMaxWidth()) {
