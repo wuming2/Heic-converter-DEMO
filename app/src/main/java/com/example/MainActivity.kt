@@ -44,12 +44,15 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -71,6 +74,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -229,27 +235,56 @@ fun ConverterScreen(
                 }
             }
 
-            // Green Offline Badge - Simple and minimal
-            Surface(
-                color = Color(0xFFE2F9EE),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
+            // More options menu
+            Box {
+                var menuExpanded by remember { mutableStateOf(false) }
+
+                IconButton(
+                    onClick = { menuExpanded = true },
+                    modifier = Modifier
+                        .size(40.dp)
+                        .background(Color.White, RoundedCornerShape(12.dp))
+                        .testTag("more_options_button")
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(5.dp)
-                            .clip(RoundedCornerShape(3.dp))
-                            .background(Color(0xFF22C55E))
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = context.getString(R.string.menu_more),
+                        tint = Color(0xFF1A1C1E)
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(
-                        text = context.getString(R.string.secure_private),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF15803D)
+                }
+
+                DropdownMenu(
+                    expanded = menuExpanded,
+                    onDismissRequest = { menuExpanded = false },
+                    modifier = Modifier.background(Color.White)
+                ) {
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = context.getString(R.string.menu_privacy_policy),
+                                color = Color(0xFF1A1C1E),
+                                fontSize = 14.sp
+                            )
+                        },
+                        onClick = {
+                            menuExpanded = false
+                            val intent = Intent(activityContext, PrivacyPolicyActivity::class.java)
+                            activityContext.startActivity(intent)
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = context.getString(R.string.menu_web_version),
+                                color = Color(0xFF1A1C1E),
+                                fontSize = 14.sp
+                            )
+                        },
+                        onClick = {
+                            menuExpanded = false
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"))
+                            activityContext.startActivity(intent)
+                        }
                     )
                 }
             }

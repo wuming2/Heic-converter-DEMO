@@ -68,4 +68,9 @@
     <string name="filter_only_heic">Only show HEIC/HEIF files</string>
     <string name="filter_only_heic_desc">Defaults to displaying only .heic/.heif files. Toggle off to allow all image formats.</string>
     <string name="log_skipped_non_heic">Skipped %1$d files because they are not HEIC/HEIF format</string>
+    <string name="menu_more">More Options</string>
+    <string name="menu_privacy_policy">Privacy Policy</string>
+    <string name="menu_web_version">View Web Version</string>
+    <string name="privacy_title">Privacy Policy</string>
+    <string name="privacy_back">Back</string>
 </resources>

@@ -68,4 +68,9 @@
     <string name="filter_only_heic">仅显示 HEIC/HEIF 文件</string>
     <string name="filter_only_heic_desc">默认仅展示 .heic 与 .heif 格式文件。取消勾选后可选择所有图片格式。</string>
     <string name="log_skipped_non_heic">已跳过 %1$d 个非 HEIC/HEIF 格式的文件</string>
+    <string name="menu_more">更多选项</string>
+    <string name="menu_privacy_policy">查看隐私政策</string>
+    <string name="menu_web_version">查看网页版</string>
+    <string name="privacy_title">隐私政策</string>
+    <string name="privacy_back">返回</string>
 </resources>
