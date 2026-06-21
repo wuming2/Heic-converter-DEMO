@@ -287,7 +287,7 @@ fun ConverterScreen(
                                 .size(90.dp)
                                 .background(Color(0xFFF1F3F4), RoundedCornerShape(16.dp))
                                 .dashedBorder(Color(0xFFC4C7C5), 16.dp, 1.5.dp)
-                                .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
+                                .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "image/*") },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -303,7 +303,7 @@ fun ConverterScreen(
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = Color(0xFF1A1C1E),
-                            modifier = Modifier.clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") }
+                            modifier = Modifier.clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "image/*") }
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
@@ -313,7 +313,7 @@ fun ConverterScreen(
                         )
                         Spacer(modifier = Modifier.height(18.dp))
                         OutlinedButton(
-                            onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
+                            onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "image/*") },
                             shape = RoundedCornerShape(20.dp),
                             border = BorderStroke(1.dp, Color(0xFF004A77)),
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFF004A77)),
@@ -388,7 +388,7 @@ fun ConverterScreen(
                                 fontWeight = FontWeight.Bold,
                                 color = Color(0xFF004A77),
                                 modifier = Modifier
-                                    .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") }
+                                    .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "image/*") }
                                     .testTag("add_more_button")
                             )
                         }
@@ -1015,7 +1015,7 @@ fun ConverterScreen(
             } else {
                 // If list is empty, bottom CTA triggers select images instantly!
                 Button(
-                    onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
+                    onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "image/*") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp)
