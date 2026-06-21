@@ -31,6 +31,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -138,10 +139,11 @@ fun ConverterScreen(
     val isSettingsExpanded by viewModel.isSettingsExpanded.collectAsState()
     val isConverting by viewModel.isConverting.collectAsState()
     val logText by viewModel.logText.collectAsState()
+    val filterOnlyHeic by viewModel.filterOnlyHeic.collectAsState()
 
     // Activity launcher for choosing multiple visual files
     val imagePickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetMultipleContents()
+        contract = PickMultipleImagesContract()
     ) { uris ->
         if (uris != null && uris.isNotEmpty()) {
             viewModel.addSelectedImages(context, uris)
@@ -273,7 +275,6 @@ fun ConverterScreen(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxWidth()
-                            .clickable { imagePickerLauncher.launch("image/*") }
                             .testTag("empty_picker_card")
                             .padding(24.dp),
                         verticalArrangement = Arrangement.Center,
@@ -285,7 +286,8 @@ fun ConverterScreen(
                                 .padding(bottom = 16.dp)
                                 .size(90.dp)
                                 .background(Color(0xFFF1F3F4), RoundedCornerShape(16.dp))
-                                .dashedBorder(Color(0xFFC4C7C5), 16.dp, 1.5.dp),
+                                .dashedBorder(Color(0xFFC4C7C5), 16.dp, 1.5.dp)
+                                .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -300,7 +302,8 @@ fun ConverterScreen(
                             text = context.getString(R.string.tap_select_heic),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF1A1C1E)
+                            color = Color(0xFF1A1C1E),
+                            modifier = Modifier.clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") }
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
@@ -310,13 +313,52 @@ fun ConverterScreen(
                         )
                         Spacer(modifier = Modifier.height(18.dp))
                         OutlinedButton(
-                            onClick = { imagePickerLauncher.launch("image/*") },
+                            onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
                             shape = RoundedCornerShape(20.dp),
                             border = BorderStroke(1.dp, Color(0xFF004A77)),
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFF004A77)),
                             contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp)
                         ) {
                             Text(context.getString(R.string.select_images_now), fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                        }
+
+                        Spacer(modifier = Modifier.height(20.dp))
+                        
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .clickable { viewModel.setFilterOnlyHeic(!filterOnlyHeic) }
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
+                                .background(Color(0xFFF1F3F4).copy(alpha = 0.5f))
+                        ) {
+                            Checkbox(
+                                checked = filterOnlyHeic,
+                                onCheckedChange = { viewModel.setFilterOnlyHeic(it) },
+                                colors = CheckboxDefaults.colors(
+                                    checkedColor = MaterialTheme.colorScheme.primary,
+                                    uncheckedColor = MaterialTheme.colorScheme.outline,
+                                    checkmarkColor = MaterialTheme.colorScheme.onPrimary
+                                ),
+                                modifier = Modifier.size(24.dp).testTag("filter_heic_checkbox")
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Column {
+                                Text(
+                                    text = context.getString(R.string.filter_only_heic),
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color(0xFF1A1C1E)
+                                )
+                                Text(
+                                    text = context.getString(R.string.filter_only_heic_desc),
+                                    fontSize = 10.sp,
+                                    color = Color(0xFF747775),
+                                    lineHeight = 13.sp,
+                                    modifier = Modifier.widthIn(max = 240.dp)
+                                )
+                            }
                         }
                     }
                 } else {
@@ -346,7 +388,7 @@ fun ConverterScreen(
                                 fontWeight = FontWeight.Bold,
                                 color = Color(0xFF004A77),
                                 modifier = Modifier
-                                    .clickable { imagePickerLauncher.launch("image/*") }
+                                    .clickable { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") }
                                     .testTag("add_more_button")
                             )
                         }
@@ -523,7 +565,7 @@ fun ConverterScreen(
                             Box(
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(16.dp))
-                                    .background(if (outputFormat == "JPEG") Color(0xFF004A77) else Color(0xFFE1E2E6))
+                                    .background(if (outputFormat == "JPEG") MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant)
                                     .clickable { viewModel.setOutputFormat("JPEG") }
                                     .testTag("radio_jpeg")
                                     .padding(horizontal = 14.dp, vertical = 6.dp),
@@ -533,14 +575,14 @@ fun ConverterScreen(
                                     text = "JPEG",
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = if (outputFormat == "JPEG") Color.White else Color(0xFF444746)
+                                    color = if (outputFormat == "JPEG") MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             }
 
                             Box(
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(16.dp))
-                                    .background(if (outputFormat == "PNG") Color(0xFF004A77) else Color(0xFFE1E2E6))
+                                    .background(if (outputFormat == "PNG") MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant)
                                     .clickable { viewModel.setOutputFormat("PNG") }
                                     .testTag("radio_png")
                                     .padding(horizontal = 14.dp, vertical = 6.dp),
@@ -550,7 +592,7 @@ fun ConverterScreen(
                                     text = "PNG",
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = if (outputFormat == "PNG") Color.White else Color(0xFF444746)
+                                    color = if (outputFormat == "PNG") MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             }
                         }
@@ -788,6 +830,45 @@ fun ConverterScreen(
                                 )
                             }
 
+                            // Firebase Crashlytics Diagnostic Tools
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Column(modifier = Modifier.fillMaxWidth()) {
+                                Text(
+                                    text = "Firebase Crashlytics",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color(0xFF444746)
+                                )
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    text = context.getString(R.string.test_crash_desc),
+                                    fontSize = 11.sp,
+                                    color = Color(0xFF747775)
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Button(
+                                    onClick = {
+                                        throw RuntimeException("Firebase Crashlytics Test Crash!")
+                                    },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(36.dp)
+                                        .testTag("trigger_test_crash_button"),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color(0xFFBA1A1A),
+                                        contentColor = Color.White
+                                    ),
+                                    contentPadding = PaddingValues(vertical = 4.dp),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Text(
+                                        text = context.getString(R.string.test_crash_btn),
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
+                            }
+
                             // Dynamic Live Log Console Terminal
                             if (logText.isNotEmpty()) {
                                 Column(modifier = Modifier.fillMaxWidth()) {
@@ -934,7 +1015,7 @@ fun ConverterScreen(
             } else {
                 // If list is empty, bottom CTA triggers select images instantly!
                 Button(
-                    onClick = { imagePickerLauncher.launch("image/*") },
+                    onClick = { imagePickerLauncher.launch(if (filterOnlyHeic) "heic" else "all") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp)
@@ -974,6 +1055,25 @@ fun ConverterScreen(
     }
 }
 
+
+class PickMultipleImagesContract : ActivityResultContracts.GetMultipleContents() {
+    override fun createIntent(context: Context, input: String): Intent {
+        val mimeType = if (input == "heic") "image/*" else input
+        val intent = super.createIntent(context, mimeType)
+        if (input == "heic") {
+            intent.putExtra(
+                Intent.EXTRA_MIME_TYPES,
+                arrayOf(
+                    "image/heic",
+                    "image/heif",
+                    "image/heic-sequence",
+                    "image/heif-sequence"
+                )
+            )
+        }
+        return intent
+    }
+}
 
 // Share helpers
 private fun shareSingleImage(context: Context, item: ImageItem) {

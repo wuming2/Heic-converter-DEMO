@@ -59,4 +59,12 @@
     
     <!-- Custom pickers / extra -->
     <string name="picker_custom_folder">自定義文件夾</string>
+
+    <!-- Crashlytics debugging elements -->
+    <string name="test_crash_btn">觸發測試崩潰</string>
+    <string name="test_crash_desc">模擬應用發生意外崩潰，用於驗證 Firebase Crashlytics 配置是否生效</string>
+
+    <!-- File Picker Filter Options -->
+    <string name="filter_only_heic">僅顯示 HEIC/HEIF 文件</string>
+    <string name="filter_only_heic_desc">默認僅展示 .heic 與 .heif 格式文件。取消勾選後可選擇所有圖片格式。</string>
 </resources>

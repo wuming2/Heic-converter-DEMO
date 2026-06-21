@@ -59,4 +59,12 @@
     
     <!-- Custom pickers / extra -->
     <string name="picker_custom_folder">Custom Folder</string>
+
+    <!-- Crashlytics debugging elements -->
+    <string name="test_crash_btn">Trigger Test Crash</string>
+    <string name="test_crash_desc">Simulate an app crash to verify Firebase Crashlytics configuration</string>
+
+    <!-- File Picker Filter Options -->
+    <string name="filter_only_heic">Only show HEIC/HEIF files</string>
+    <string name="filter_only_heic_desc">Defaults to displaying only .heic/.heif files. Toggle off to allow all image formats.</string>
 </resources>

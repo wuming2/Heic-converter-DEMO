@@ -70,6 +70,13 @@ class HeicConverterViewModel : ViewModel() {
     private val _logText = MutableStateFlow("离线环境就绪。选择图片后即可开始转换。\n")
     val logText: StateFlow<String> = _logText.asStateFlow()
 
+    private val _filterOnlyHeic = MutableStateFlow(true)
+    val filterOnlyHeic: StateFlow<Boolean> = _filterOnlyHeic.asStateFlow()
+
+    fun setFilterOnlyHeic(filter: Boolean) {
+        _filterOnlyHeic.value = filter
+    }
+
     fun toggleSettingsExpanded() {
         _isSettingsExpanded.update { !it }
     }
