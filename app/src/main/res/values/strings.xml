@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">HEIC Converter</string>
+    <string name="offline_processing">Local Offline Processing</string>
+    <string name="secure_private">Secure &amp; Private</string>
+    <string name="tap_select_heic">Tap to select HEIC images</string>
+    <string name="batch_support_desc">Supports batch HEIC/HEIF • Secure local conversion</string>
+    <string name="select_images_now">Select Images Now</string>
+    <string name="queue_title">Waiting Queue (%1$d images)</string>
+    <string name="add_more">Add More+</string>
+    <string name="remove">Remove</string>
+    <string name="processing_percent">Processing (%1$d%%)</string>
+    <string name="share">Share</string>
+    <string name="failed">Failed</string>
+    <string name="export_format">Export Format</string>
+    <string name="quality">Quality</string>
+    <string name="lossless">Lossless</string>
+    <string name="preserve_metadata">Preserve Metadata (Exif)</string>
+    <string name="preserve_metadata_desc">Keep camera model, focal length, shutter time, orientation, etc.</string>
+    <string name="hide_advanced">Hide Advanced Settings ▲</string>
+    <string name="show_advanced">Show Advanced Settings ▼</string>
+    <string name="custom_save_dir">Custom Save Directory</string>
+    <string name="default_sandbox_path">Default App Sandbox (Save manually after conversion)</string>
+    <string name="clear_custom_path">Clear custom path</string>
+    <string name="choose_directory">Choose Directory</string>
+    <string name="adjust_quality">Compression quality adjustment (JPEG only)</string>
+    <string name="log_console">Processing Log Console (Real-time)</string>
+    <string name="clear_all">Clear All</string>
+    <string name="export_share">Export &amp; Share</string>
+    <string name="batch_export_share">Batch Export &amp; Share (%1$d)</string>
+    <string name="converting_batch">Converting...</string>
+    <string name="start_convert_save">Start Convert &amp; Save</string>
+    <string name="start_batch_convert">Start Batch Conversion</string>
+    <string name="import_start_convert">Import &amp; Start Convert</string>
+    <string name="no_network_footnote">No Network Required • Privacy Protected • Secure EXIF</string>
+    
+    <!-- Logging & Error string resources -->
+    <string name="log_custom_save_path">Custom save path configured: %1$s</string>
+    <string name="log_default_save_path">Switched to default save path (share after completion)</string>
+    <string name="log_import_success">Successfully imported %1$d images to list</string>
+    <string name="log_remove_image">Removed item: %1$s</string>
+    <string name="log_clear_all_done">Cleared all waiting items</string>
+    <string name="log_no_images">No images to process. Please add HEIC files first.</string>
+    <string name="log_start_conversion">Starting batch conversion, count: %1$d images</string>
+    <string name="log_reading_save_path">Reading target save path to optimize writing speed...</string>
+    <string name="log_converting_progress">[%1$d/%2$d] Converting: %3$s...</string>
+    <string name="log_convert_success_progress">[%1$d/%2$d] Conversion successful! Exported.</string>
+    <string name="log_convert_failed_progress">[%1$d/%2$d] Conversion failed: %3$s</string>
+    <string name="log_batch_completed">Batch job completed! Export via share or check custom folder.</string>
+    
+    <string name="error_decode_failed">Failed to decode HEIC image. Native decoder not supported or file damaged.</string>
+    <string name="error_custom_path_invalid">Save failed: Configured custom path is unavailable or expired.</string>
+    <string name="error_create_file_failed">Save failed: Cannot create file in custom folder.</string>
+    <string name="error_write_stream_failed">Save failed: Cannot write to file stream.</string>
+    <string name="error_conversion_err">Conversion error: %1$s</string>
+    
+    <!-- Share titles -->
+    <string name="share_image_title">Share converted image: %1$s</string>
+    <string name="share_multiple_images_title">Batch share converted images</string>
+    
+    <!-- Custom pickers / extra -->
+    <string name="picker_custom_folder">Custom Folder</string>
+</resources>

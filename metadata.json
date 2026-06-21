@@ -1,0 +1,6 @@
+{
+  "name": "HEIC 转换器",
+  "description": "一款完全离线、高度安全的 HEIC 格式图片批量转换工具，支持保留或清洗 EXIF 原始元数据，支持自定义压缩品质并提供导出分享及自定义路径保存功能。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

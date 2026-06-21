@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">HEIC 轉換器</string>
+    <string name="offline_processing">本地離線處理</string>
+    <string name="secure_private">安全隱私</string>
+    <string name="tap_select_heic">點擊選擇 HEIC 圖片</string>
+    <string name="batch_support_desc">支持批量處理 HEIC/HEIF • 本地安全轉換</string>
+    <string name="select_images_now">立即選擇圖片</string>
+    <string name="queue_title">待轉換隊列 (%1$d 張圖片)</string>
+    <string name="add_more">添加更多+</string>
+    <string name="remove">移除</string>
+    <string name="processing_percent">處理中 (%1$d%%)</string>
+    <string name="share">分享</string>
+    <string name="failed">失敗</string>
+    <string name="export_format">導出格式</string>
+    <string name="quality">質量</string>
+    <string name="lossless">自動無損</string>
+    <string name="preserve_metadata">保留原始元數據 (Exif)</string>
+    <string name="preserve_metadata_desc">保留相機型號、焦距、快門時間及旋轉方向等參數</string>
+    <string name="hide_advanced">隱藏高級壓縮參數 ▲</string>
+    <string name="show_advanced">顯示高級壓縮參數 ▼</string>
+    <string name="custom_save_dir">自定義保存目標目錄</string>
+    <string name="default_sandbox_path">默認應用內部沙盒路徑 (轉換後手動保存)</string>
+    <string name="clear_custom_path">清除自定義保存路徑</string>
+    <string name="choose_directory">選擇目錄</string>
+    <string name="adjust_quality">壓縮畫質大小調節（僅支持 JPEG）</string>
+    <string name="log_console">處理日誌控制台 (實時)</string>
+    <string name="clear_all">全部清除</string>
+    <string name="export_share">導出分享</string>
+    <string name="batch_export_share">批量導出分享 (%1$d)</string>
+    <string name="converting_batch">批量轉換中...</string>
+    <string name="start_convert_save">開始轉換並保存</string>
+    <string name="start_batch_convert">開始批量轉換</string>
+    <string name="import_start_convert">導入並開始轉換</string>
+    <string name="no_network_footnote">無需聯網 · 保護隱私 EXIF 安全防漏</string>
+    
+    <!-- Logging & Error string resources -->
+    <string name="log_custom_save_path">已配置自定義保存路徑: %1$s</string>
+    <string name="log_default_save_path">已切換為默認保存路徑 (完成後分享導出)</string>
+    <string name="log_import_success">成功導入 %1$d 張待轉換圖片</string>
+    <string name="log_remove_image">移除待轉換圖片: %1$s</string>
+    <string name="log_clear_all_done">已清空待處理列表</string>
+    <string name="log_no_images">無可處理的圖片，請先添加 HEIC 文件。</string>
+    <string name="log_start_conversion">啟動批量格式轉換，預計轉換數量: %1$d 張</string>
+    <string name="log_reading_save_path">正在讀取目標保存路徑，優化寫入速度...</string>
+    <string name="log_converting_progress">[%1$d/%2$d] 正在轉換: %3$s...</string>
+    <string name="log_convert_success_progress">[%1$d/%2$d] 轉換成功！已導出。</string>
+    <string name="log_convert_failed_progress">[%1$d/%2$d] 轉換失敗: %3$s</string>
+    <string name="log_batch_completed">批處理執行完畢！歡迎通過分享導出，或在自定義文件夾內查看。</string>
+    
+    <string name="error_decode_failed">解碼 HEIC 圖片失敗，原生解碼器不支持或資源受損</string>
+    <string name="error_custom_path_invalid">保存失敗：指定的自定義路徑不可用或失效</string>
+    <string name="error_create_file_failed">保存失敗：無法在自定義文件夾中創建文件</string>
+    <string name="error_write_stream_failed">保存失敗：無法寫入文件流</string>
+    <string name="error_conversion_err">轉換出錯: %1$s</string>
+    
+    <!-- Share titles -->
+    <string name="share_image_title">分享導出的圖片: %1$s</string>
+    <string name="share_multiple_images_title">批量導出分享轉換後的圖片</string>
+    
+    <!-- Custom pickers / extra -->
+    <string name="picker_custom_folder">自定義文件夾</string>
+</resources>

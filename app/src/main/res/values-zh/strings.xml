@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">HEIC 转换器</string>
+    <string name="offline_processing">本地离线处理</string>
+    <string name="secure_private">安全私密</string>
+    <string name="tap_select_heic">点击选择 HEIC 图片</string>
+    <string name="batch_support_desc">支持批量处理 HEIC/HEIF • 本地安全转换</string>
+    <string name="select_images_now">立即选择图片</string>
+    <string name="queue_title">待转换队列 (%1$d 张图片)</string>
+    <string name="add_more">添加更多+</string>
+    <string name="remove">移除</string>
+    <string name="processing_percent">处理中 (%1$d%%)</string>
+    <string name="share">分享</string>
+    <string name="failed">失败</string>
+    <string name="export_format">导出格式</string>
+    <string name="quality">质量</string>
+    <string name="lossless">自动无损</string>
+    <string name="preserve_metadata">保留原始元数据 (Exif)</string>
+    <string name="preserve_metadata_desc">保留相机型号、焦距、快门时间及旋转方向等参数</string>
+    <string name="hide_advanced">隐藏高级压缩参数 ▲</string>
+    <string name="show_advanced">显示高级压缩参数 ▼</string>
+    <string name="custom_save_dir">自定义保存目标目录</string>
+    <string name="default_sandbox_path">默认应用内部沙盒路径 (转换后手动保存)</string>
+    <string name="clear_custom_path">清除自定义保存路径</string>
+    <string name="choose_directory">选择目录</string>
+    <string name="adjust_quality">压缩画质大小调节（仅支持 JPEG）</string>
+    <string name="log_console">处理日志控制台 (实时)</string>
+    <string name="clear_all">全部清除</string>
+    <string name="export_share">导出分享</string>
+    <string name="batch_export_share">批量导出分享 (%1$d)</string>
+    <string name="converting_batch">批量转换中...</string>
+    <string name="start_convert_save">开始转换并保存</string>
+    <string name="start_batch_convert">开始批量转换</string>
+    <string name="import_start_convert">导入并开始转换</string>
+    <string name="no_network_footnote">无需联网 · 保护隐私 EXIF 安全防漏</string>
+    
+    <!-- Logging & Error string resources -->
+    <string name="log_custom_save_path">已配置自定义保存路径: %1$s</string>
+    <string name="log_default_save_path">已切换为默认保存路径 (完成后分享导出)</string>
+    <string name="log_import_success">成功导入 %1$d 张待转换图片</string>
+    <string name="log_remove_image">移除待转换图片: %1$s</string>
+    <string name="log_clear_all_done">已清空待处理列表</string>
+    <string name="log_no_images">无可处理的图片，请先添加 HEIC 文件。</string>
+    <string name="log_start_conversion">启动批量格式转换，预计转换数量: %1$d 张</string>
+    <string name="log_reading_save_path">正在读取目标保存路径，优化写入速度...</string>
+    <string name="log_converting_progress">[%1$d/%2$d] 正在转换: %3$s...</string>
+    <string name="log_convert_success_progress">[%1$d/%2$d] 转换成功！已导出。</string>
+    <string name="log_convert_failed_progress">[%1$d/%2$d] 转换失败: %3$s</string>
+    <string name="log_batch_completed">批处理执行完毕！欢迎通过分享导出，或在自定义文件夹内查看。</string>
+    
+    <string name="error_decode_failed">解码 HEIC 图片失败，原生解码器不支持或资源受损</string>
+    <string name="error_custom_path_invalid">保存失败：指定的自定义路径不可用或失效</string>
+    <string name="error_create_file_failed">保存失败：无法在自定义文件夹中创建文件</string>
+    <string name="error_write_stream_failed">保存失败：无法写入文件流</string>
+    <string name="error_conversion_err">转换出错: %1$s</string>
+    
+    <!-- Share titles -->
+    <string name="share_image_title">分享导出的图片: %1$s</string>
+    <string name="share_multiple_images_title">批量导出分享转换后的图片</string>
+    
+    <!-- Custom pickers / extra -->
+    <string name="picker_custom_folder">自定义文件夹</string>
+</resources>
