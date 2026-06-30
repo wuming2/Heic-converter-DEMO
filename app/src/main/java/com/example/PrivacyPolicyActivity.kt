@@ -168,7 +168,12 @@ fun PrivacyPolicyScreen(
                             " • Google Play Services (Core system features)\n" +
                             " • Google Analytics for Firebase (Service usage statistics)\n" +
                             " • Firebase Crashlytics (Diagnostic crash logging)\n\n" +
-                            "These services maintain their distinct privacy guidelines which you can review transparently."
+                            "These services maintain their distinct privacy guidelines which you can review transparently\n" +
+                            " • 使用SDK名称：友盟SDK\n" +
+                            "服务类型：请按SDK功能填写，如统计分析\n" +
+                            "收集个人信息类型：设备信息（Android ID/IDFA/IDFV/OAID/OpenUDID/GUID；可选-IMEI/IMSI/ICCID）、网络信息、位置（可选）、应用列表（可选）\n" +
+                            "隐私权政策链接：https://www.umeng.com/page/policy\n" +
+                            "\n"
                 )
 
                 SectionDivider()
