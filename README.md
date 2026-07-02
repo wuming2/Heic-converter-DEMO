@@ -2,6 +2,7 @@
 # HEIC to JPG Converter
 ![HEIC Converter Banner](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=400&q=80)
 
+Download latest release APK:(https://github.com/wuming2/Heic-converter-Android/releases)
 
 A fully localized, highly secure, and beautifully styled **HEIC/HEIF batch image converter**. This application is dedicated to providing Android users with a high-performance, zero-privacy-risk conversion experience, solving compatibility paintpoints of Apple's HEIC format on other devices and operating systems.
 
