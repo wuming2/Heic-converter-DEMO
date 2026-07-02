@@ -1,5 +1,5 @@
 
-# HEIC/HEIF Image Converter
+# HEIC to JPG Converter
 ![HEIC Converter Banner](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=400&q=80)
 
 
@@ -71,8 +71,7 @@ This application is a modern Android showcase, demonstrating excellent engineeri
 ---
 
 
-# HEIC 转换器 | HEIC/HEIF Image Converter
-
+# HEIC 转换器 | HEIC转JPG HEIC转PNG
 
 一款完全本地化、高度安全且界面精美的 **HEIC/HEIF 格式图片批量转换工具**。本应用致力于为 Android 用户提供高性能、零隐私风险的图像转换体验，解决苹果生态（HEIC 格式）在其他设备与系统上的兼容性痛点。
 
